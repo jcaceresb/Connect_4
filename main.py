@@ -236,7 +236,7 @@ print()
 
 if modo == 1: #Si el modo fue "JUGADOR VS IA"
   if dificultad == 1:   #Si la dificultad fue "MEDIA"
-    if ganador != "IA":   #Si no gano la IA
+    if ganador != "IA" and ganador != "Empate":   #Si no gano la IA
       print("FELICIDADES, ESTAS EN EL TOP")
       controles.rank_media(ganador,cont) #Evalua si entras o no al top
     print()
@@ -251,7 +251,7 @@ if modo == 1: #Si el modo fue "JUGADOR VS IA"
       print("Puntaje: "+(str(int(datos[1])))+"\n")
     archivo3.close()
   else:   #Si la dificultad fue "LEYENDA"
-    if ganador != "IA":   #Si no gano la IA
+    if ganador != "IA" and ganador != "Empate":   #Si no gano la IA
       print("FELICIDADES, GANASTE A LA IA EN MODO LEYENDA")
       controles.rank_leyen(ganador) #Escribe tu nombre en el top
     print("GANADORES (DIFICULTAD LEYENDA)")
