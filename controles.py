@@ -46,17 +46,17 @@ def tablero_lleno(t): #Funcion para definir el tablero lleno
         break
   return lleno #devuelve el valor de lleno
 
-def rank_media(gan,num):
+def rank_media(gan,num):  #Funcion para evaluar si entras al top en modo medio
   nombres = []
   puntajes = []
   archivo = open("ranking_media.txt","r")
-  for puesto in archivo:
+  for puesto in archivo:   #Recibe el nombre y puntajes existentes
     datos = puesto.split(" ")
     nombres.append(datos[0])
     puntajes.append(int(datos[1]))
   archivo.close()
 
-  if num <= puntajes[4]:
+  if num <= puntajes[4]:   #Evalua hasta donde puedes posicionarte
     if num <= puntajes[3]:
       if num <= puntajes[2]:
         if num <= puntajes[1]:
@@ -96,7 +96,7 @@ def rank_media(gan,num):
       puntajes[4] = num
       nombres[4] = gan
 
-  archivo2 = open("ranking_media.txt","w+")
+  archivo2 = open("ranking_media.txt","w+") #Si entras, reeescribe el top
   for i in range(0,len(nombres)):
     if i != len(nombres)-1:
       archivo2.write(nombres[i]+" "+str(puntajes[i])+"\n")
@@ -104,15 +104,15 @@ def rank_media(gan,num):
       archivo2.write(nombres[i]+" "+str(puntajes[i]))
   archivo2.close()
 
-def rank_leyen(gana):
+def rank_leyen(gana):   #Funcion para el TOP si ganas a la IA en "LEYENDA"
   nombres=[]
-  archivo = open("ranking_leyenda.txt","r")
+  archivo = open("ranking_leyenda.txt","r") #Lee todos los nombres
   for puesto in archivo:
     datos = puesto.split(" ")
   archivo.close()
-  datos.append(gana)
+  datos.append(gana)   #Añade tu nombre
 
-  archivo2 = open("ranking_leyenda.txt","w+")
+  archivo2 = open("ranking_leyenda.txt","w+")   #Reescribe todos los nombres con el del jugador reciente incluido
   for i in range(0,len(datos)):
     if i != len(datos)-1:
       archivo2.write(datos[i]+" ")
