@@ -1,8 +1,8 @@
 import controles   #Importa las funciones de "controles.py"
 import base_bot    #Importa las funciones de "base_bot.py"
 
-def mostrar(x,y):
-  for i in range(0,len(x)): #Imprime el tablero igual a tablero de connect 4
+def mostrar(x,y):   #Imprime el tablero igual a tablero de connect 4
+  for i in range(0,len(x)): #Imprime donde van la fichas
     print("|",end="")
     for j in range(0,len(x)+1):
       if j != len(x):
@@ -10,7 +10,7 @@ def mostrar(x,y):
       else:
         print(" "+str(x[i][j]),end=" |\n")
   print("|",end="")
-  for k in range(0,len(y)):
+  for k in range(0,len(y)): #Imprime el numero de la columna
     if k != len(y)-1:
       print(" "+str(y[k]),end=" |")
     else:
@@ -33,13 +33,13 @@ print("BENVENIDOS A CONNECT 4") #Introduccion del juego
 print()
 print("Hecho por: Jose Caceres, Augusto Bracamonte y Vasco Bustamante")
 print()
-print("MODOS DE JUEGO:")
+print("MODOS DE JUEGO:")   #Enuncia los modos de juego
 print()
 print("JUGADOR VS IA: 1")
 print("JUGADOR VS JUGADOR: 2")
 print()
 while True:
-  modo = int(input("¿Qué modo jugarás? (1-2): "))
+  modo = int(input("¿Qué modo jugarás? (1-2): ")) #Pregunta que modo se jugará hasta obtener respuesta válida
   if modo == 1 or modo == 2:
     break
 print()
@@ -51,17 +51,17 @@ tablero = [[" "," "," "," "," "," "," "], #Define el tablero
 [" "," "," "," "," "," "," "],
 [" "," "," "," "," "," "," "]]
 
-numeros = ["1","2","3","4","5","6","7"]
+numeros = ["1","2","3","4","5","6","7"] #Define la columna debajo del tablero
 
-if modo == 2:
+if modo == 2: #Si selecciona "JUGADOR VS JUGADOR"
   print("Has seleccionado JUGADOR VS JUGADOR")
   print()
   jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
   print()
   jugador2 = input("Jugador 2, introduce tu nombre: ")
   print()
-  
-  print(jugador1+", juegas con la pieza 'o'")
+
+  print(jugador1+", juegas con la pieza 'o'") #Establece con que fichas juega cada jugador
   print()
 
   print(jugador2+", juegas con la pieza '+'")
@@ -110,16 +110,16 @@ if modo == 2:
 
     print()
 
-else:
+else: #Si selecciona "JUGADOR VS IA"
   print("Has seleccionado JUGADOR VS IA")
   print()
-  print("DIFICULTAD:")
+  print("DIFICULTAD:")   #Enuncia el nivel de dificultad del bot
   print()
   print("MEDIA: 1")
   print("LEYENDA: 2")
   print()
   while True:
-    dificultad = int(input("¿Qué modo jugarás? (1-2): "))
+    dificultad = int(input("¿Qué modo jugarás? (1-2): "))   #Pregunta que modo se jugará hasta obtener respuesta válida
     if dificultad == 1 or dificultad == 2:
         break
   print()
@@ -129,7 +129,7 @@ else:
     print()
     jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
     print()
-    
+
     print(jugador1+", juegas con la pieza 'o'")
     print()
 
@@ -179,7 +179,7 @@ else:
     print()
     jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
     print()
-    
+
     print(jugador1+", juegas con la pieza 'o'")
     print()
 
@@ -234,31 +234,31 @@ print()
 print("Ganador:",ganador) #Se menciona al jugador ganador
 print()
 
-if modo == 1:
-  if dificultad == 1:
-    if ganador != "IA":
+if modo == 1: #Si el modo fue "JUGADOR VS IA"
+  if dificultad == 1:   #Si la dificultad fue "MEDIA"
+    if ganador != "IA":   #Si no gano la IA
       print("FELICIDADES, ESTAS EN EL TOP")
-      controles.rank_media(ganador,cont)
+      controles.rank_media(ganador,cont) #Evalua si entras o no al top
     print()
     print("MEJORES PUNTUACIONES (DIFICULTAD MEDIA)")
     print()
     print("Gana en el menor número de jugadas para aparecer")
     print()
-    archivo3 = open("ranking_media.txt","r")
+    archivo3 = open("ranking_media.txt","r") #Imprime el top
     for puesto in archivo3:
       datos = puesto.split(" ")
       print("Nombre: " + datos[0], end="   ")
       print("Puntaje: "+(str(int(datos[1])))+"\n")
     archivo3.close()
-  else:
-    if ganador != "IA":
+  else:   #Si la dificultad fue "LEYENDA"
+    if ganador != "IA":   #Si no gano la IA
       print("FELICIDADES, GANASTE A LA IA EN MODO LEYENDA")
-      controles.rank_leyen(ganador)
+      controles.rank_leyen(ganador) #Escribe tu nombre en el top
     print("GANADORES (DIFICULTAD LEYENDA)")
     print()
     print("Gana en dificultad leyenda para aparecer")
     print()
-    archivo3 = open("ranking_leyenda.txt","r")
+    archivo3 = open("ranking_leyenda.txt","r")   #Muestra todos los jugadores que ganaron en este modo
     for puesto in archivo3:
       datos = puesto.split(" ")
     archivo3.close()
