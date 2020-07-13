@@ -3,8 +3,18 @@ import base_bot    #Importa las funciones de "base_bot.py"
 
 def mostrar(x,y):
   for i in range(0,len(x)): #Imprime el tablero igual a tablero de connect 4
-    print(x[i])
-  print(y)
+    print("|",end="")
+    for j in range(0,len(x)+1):
+      if j != len(x):
+        print(" "+str(x[i][j]),end=" |")
+      else:
+        print(" "+str(x[i][j]),end=" |\n")
+  print("|",end="")
+  for k in range(0,len(y)):
+    if k != len(y)-1:
+      print(" "+str(y[k]),end=" |")
+    else:
+      print(" "+str(y[k]),end=" |\n")
 
 def jugar(jug,val): #Para cada turno de jugador
   preg = jug + ", introduzca un número (1-7): " #Define la pregunta usando el nombre
@@ -49,6 +59,12 @@ if modo == 2:
   jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
   print()
   jugador2 = input("Jugador 2, introduce tu nombre: ")
+  print()
+  
+  print(jugador1+", juegas con la pieza 'o'")
+  print()
+
+  print(jugador2+", juegas con la pieza '+'")
   print()
 
   mostrar(tablero,numeros) #Muestra el tablero inicial
@@ -113,6 +129,9 @@ else:
     print()
     jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
     print()
+    
+    print(jugador1+", juegas con la pieza 'o'")
+    print()
 
     mostrar(tablero,numeros) #Muestra el tablero inicial
     print()
@@ -159,6 +178,9 @@ else:
     print("Has seleccionado DIFICULTAD MEDIA")
     print()
     jugador1 = input("Jugador 1, introduce tu nombre: ") #Introducción del nombre de los jugadores
+    print()
+    
+    print(jugador1+", juegas con la pieza 'o'")
     print()
 
     mostrar(tablero,numeros) #Muestra el tablero inicial
