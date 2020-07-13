@@ -30,7 +30,7 @@ def comprobar(t,n):
 
     for i in range(0,3): #Comrpobación en diagonal 2
       for diag in range(3,7):
-        if t[i][diag] == n and t[i-1][diag-1] == n and t[i-2][diag-2] == n and t[i-3][diag-3] == n: #Posiciones
+        if t[i][diag] == n and t[i+1][diag-1] == n and t[i+2][diag-2] == n and t[i+3][diag-3] == n: #Posiciones
           cond1 = True
           break
 
